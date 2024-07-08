@@ -345,7 +345,8 @@ def construct_tree():
     # Build tree
     documents = load_documents()
     leaf_texts = [chunk.page_content for chunk in documents]
+    # leaf_metadata = [chunk.metadata["source"] for chunk in documents]
     results = recursive_embed_cluster_summarize(leaf_texts, level=1, n_levels=3)
-    return leaf_texts, results
+    return leaf_texts, results, # leaf_metadata
 
 

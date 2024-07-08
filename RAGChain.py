@@ -19,7 +19,7 @@ load_dotenv()
 
 CHROMA_PATH = "chroma"
 embd = OpenAIEmbeddings()
-model = ChatOpenAI(model="gpt-4o")
+model = ChatOpenAI(model="gpt-4o", temperature=0)
 qa_system_prompt = """You are an assistant for question-answering tasks.
 EXCLUSIVELY use ONLY the following pieces of retrieved context to answer the question.
 If you don't know the answer, just say that you don't know.
@@ -51,10 +51,6 @@ def get_session_history(user_id: str, conversation_id: str) -> BaseChatMessageHi
     if (user_id, conversation_id) not in store:
         store[(user_id,conversation_id)] = ChatMessageHistory()
     return store[(user_id, conversation_id)]
-
-
-def format_docs(docs):
-    return "\n\n".join(doc.page_content for doc in docs)
 
 
 def ask_chain(query, user_id, conversation_id):
