@@ -1,5 +1,4 @@
 from typing import Dict, List, Optional, Tuple
-
 import numpy as np
 import pandas as pd
 import umap
@@ -7,17 +6,29 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from sklearn.mixture import GaussianMixture
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-
 from LlamaParse import load_documents
+from dotenv import load_dotenv
 
+# Load environment variables from a .env file
+load_dotenv()
+
+# Initialize the ChatOpenAI model with specified parameters
 model = ChatOpenAI(temperature=0, model="gpt-4o")
+
+# Initialize the OpenAIEmbeddings object
 embd = OpenAIEmbeddings()
+
+# Set a random seed for reproducibility
 RANDOM_SEED = 42
+
+# Define the prompt template for summarizing documents
 prompt_template = """Here is a subset of documents from the Department of Science and Technology - Philippine Council for Industry, Energy, and Emerging Technology Research and Development (DOST-PCIEERD).
     These documents consist of directives related to various aspects of research and development in energy and emerging technologies.
     Please provide a detailed summary of the documents provided.
-    
+
     {context}"""
+
+
 def global_cluster_embeddings(
         embeddings: np.ndarray,
         dim: int,
@@ -177,9 +188,6 @@ def perform_clustering(
         total_clusters += n_local_clusters
 
     return all_local_clusters
-
-
-### --- Our code below --- ###
 
 
 def embed(texts):
@@ -342,11 +350,25 @@ def recursive_embed_cluster_summarize(
 
 
 def construct_tree():
-    # Build tree
+    """
+    Build a hierarchical tree of documents by embedding, clustering, and summarizing the texts.
+
+    Returns:
+        Tuple[List[str], Dict[int, Tuple[pd.DataFrame, pd.DataFrame]]]:
+        - leaf_texts: List of text content from the documents.
+        - results: Dictionary containing clusters and summaries at each level.
+    """
+    # Load documents using the load_documents function
     documents = load_documents()
+
+    # Extract the text content from each document chunk
     leaf_texts = [chunk.page_content for chunk in documents]
-    # leaf_metadata = [chunk.metadata["source"] for chunk in documents]
+    # WIP leaf_metadata = [chunk.metadata["source"] for chunk in documents]
+
+    # Perform recursive embedding, clustering, and summarizing of the texts
     results = recursive_embed_cluster_summarize(leaf_texts, level=1, n_levels=3)
-    return leaf_texts, results, # leaf_metadata
+
+    # Return the leaf texts and clustering results
+    return leaf_texts, results  # WIP , leaf_metadata
 
 
