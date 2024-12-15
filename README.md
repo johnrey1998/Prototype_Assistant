@@ -1,6 +1,8 @@
+Webview: https://mint-shrimp-486.notion.site/Chat-Assistant-9249bbfac66e49309af65fc9f8a6f3a0
+
 # Chat Assistant
 
-![Untitled](Untitled.png)
+![Untitled](Images/Untitled.png)
 
 regarding the backend interactions for the large language model:
 
