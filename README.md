@@ -4,7 +4,7 @@
 
 regarding the backend interactions for the large language model:
 
-![Untitled](Untitled%201.png)
+![Untitled](Images/Untitled%201.png)
 
 | from scratch (langchain) | third party |
 | --- | --- |
@@ -31,17 +31,17 @@ regarding the backend interactions for the large language model:
 
 ### Knowledge encapsulation
 
-![Untitled](Untitled%202.png)
+![Untitled](Images/Untitled%202.png)
 
-![Untitled](Untitled%203.png)
+![Untitled](Images/Untitled%203.png)
 
 - minimize hallucinations
 
 ### Quality interactions:
 
-![Untitled](Untitled%204.png)
+![Untitled](Images/Untitled%204.png)
 
-![Untitled](Untitled%205.png)
+![Untitled](Images/Untitled%205.png)
 
 - usefulness
 
@@ -59,7 +59,7 @@ regarding the backend interactions for the large language model:
 
 # PDF to text
 
-![Untitled](Untitled%206.png)
+![Untitled](Images/Untitled%206.png)
 
 ________________________________________________V____________________________________________________
 
@@ -170,9 +170,9 @@ PDF to text worked better than markdown when interacting with LLM
 
 ## Naive RAG
 
-![Untitled](Untitled%207.png)
+![Untitled](Images/Untitled%207.png)
 
-![Untitled](Untitled%208.png)
+![Untitled](Images/Untitled%208.png)
 
 ### Naive RAG has limitations
 
@@ -181,7 +181,7 @@ PDF to text worked better than markdown when interacting with LLM
 
 ## Recursive abstractive processing for tree-organized retrieval (RAPTOR)
 
-![Untitled](Untitled%209.png)
+![Untitled](Images/Untitled%209.png)
 
 ```python
 def construct_tree():
@@ -195,7 +195,7 @@ def construct_tree():
 
 **results: dict[int, tup(clusters, summary)] containing the resulting summaries from the leaf level to the root layer**
 
-![Untitled](Untitled%2010.png)
+![Untitled](Images/Untitled%2010.png)
 
 Clusters at the next level can source the same data → 3 can be in both 6 and 8
 
@@ -219,9 +219,9 @@ ________________________________________________V_______________________________
 
 ________________________________________________V____________________________________________________
 
-![Untitled](Untitled%2011.png)
+![Untitled](Images/Untitled%2011.png)
 
-![Untitled](Untitled%2012.png)
+![Untitled](Images/Untitled%2012.png)
 
 THE LLM WILL HAVE ACCESS TO…
 
@@ -399,7 +399,7 @@ def ask_chain(query, user_id, conversation_id):
 
 # Front-end
 
-![Untitled](Untitled%2013.png)
+![Untitled](Images/Untitled%2013.png)
 
 # Future recommendations:
 
